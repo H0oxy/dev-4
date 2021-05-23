@@ -12,11 +12,3 @@ def index(request):
         'numbers': random.choices(numbers),
     }
     return render(request, 'mainapp/index.html', context)
-
-def index(request):
-    numbers = Numbers.objects.all()
-    context = {
-        'page_title': 'Рандомайзер',
-        'numbers': random.choices(numbers),
-    }
-    return render(request, 'mainapp/index.html', context)
