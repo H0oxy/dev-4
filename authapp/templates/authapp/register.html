@@ -1,0 +1,16 @@
+{% extends 'mainapp/base.html' %}
+<title>{{ page_title|capfirst }}</title>
+{% block content %}
+    <h1 style="text-align: center">Регистрация</h1>
+<div style="margin-left: 42%; text-align: justify">
+    <div class="form">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit"
+                   class="buton"
+                   value="зарегистрироваться">
+        </form>
+    </div>
+</div>
+{% endblock %}
