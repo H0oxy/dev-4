@@ -1,9 +1,22 @@
 {% extends 'mainapp/base.html' %}
 {% block content %}
 
-    {% for i in numbers %}
-        {{ i.numbers }}
-    {% endfor %}
+
+    {% if user.is_authenticated %}
+        <div style="text-align: center; font-size: 72px">
+        {% for i in numbers %}
+            {{ i.numbers }}
+        {% endfor %}
+        <br>
+        </div>
+        <div style="font-size: 56px; text-align: center; margin-right: 3%;"><a href="{% url 'main:index' %}">еще</a></div>
+    {% endif %}
+
+
+    {% if not user.is_authenticated %}
+        <h1 style="text-align: center">Рандомное число вам недоступно</h1>
+        <h4 style="text-align: center">Что бы увидеть нужно <a href="{% url 'auth:login' %}">авторизоваться</a></h4>
+    {% endif %}
 
 
 {% endblock %}
