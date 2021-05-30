@@ -4,12 +4,11 @@
 
     {% if user.is_authenticated %}
         <div style="text-align: center; font-size: 72px">
-        {% for i in numbers %}
-            {{ i.numbers }}
+        {% for num in num %}
+            {{ num }}
         {% endfor %}
-        <br>
         </div>
-        <div style="font-size: 56px; text-align: center; margin-right: 3%;"><a href="{% url 'main:index' %}">еще</a></div>
+
     {% endif %}
 
 
