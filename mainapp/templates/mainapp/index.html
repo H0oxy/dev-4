@@ -2,20 +2,315 @@
 {% block content %}
 
 
-    {% if user.is_authenticated %}
-        <div style="text-align: center; font-size: 72px">
-        {% for i in num %}
-            {{ i }}
-        {% endfor %}
+<nav class="navbar navbar-expand-lg bg-primary navbar-dark shadow">
+  <div class="container-fluid">
+      <a href="{% url 'main:index' %}"><img style="width: 80px; height: 80px; margin-left: 15px; margin-right: 50px;" src="static/img/logo.png"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Сведения об образовательной организации
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">Основные сведения</a></li>
+            <li><a class="dropdown-item" href="#">Структура и органы управления образовательной организацией</a></li>
+            <li><a class="dropdown-item" href="#">Документы</a></li>
+            <li><a class="dropdown-item" href="#">Образование</a></li>
+            <li><a class="dropdown-item" href="#">Образовательные стандарты</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Главная
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <li><a class="dropdown-item" href="#">Выпускники</a></li>
+          <li><a class="dropdown-item" href="#">О нас</a></li>
+        </ul>
+        </li>
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Новости
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <li><a class="dropdown-item" href="#">Архив новостей 2015г.- 2016г.</a></li>
+        </ul>
+        </li>
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Отделы
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <li><a class="dropdown-item" href="#">Отдел духовых инструментов</a></li>
+          <li><a class="dropdown-item" href="#">Отдел народных инструментов</a></li>
+        </ul>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link" href="#">Видео</a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link" href="#">Конкурсы</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Афиша</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Контакты</a>
+        </li>
+      </ul>
+      <form class="d-flex" style="margin-right: 6.5%;">
+        <input class="form-control me-2" type="search" placeholder="Поиск" aria-label="Search">
+        <button class="btn btn-outline-light" type="submit">Найти</button>
+      </form>
+
+        {% if not user.is_authenticated %}
+            <a class="btn btn-outline-light" style="text-decoration: none;" href="{% url 'auth:login' %}">Войти</a>
+        {% endif %}
+        {% if user.is_authenticated %}
+            <a class="btn btn-outline-light" style="text-decoration: none;" href="{% url 'auth:logout' %}">Выйти</a>
+        {% endif %}
+       </div>
+  </div>
+</nav>
+
+
+<div class="body bg-primary">
+
+    <div class="body1">
+
+        <span class="bodyright bg-primary">
+            <div style="margin-top: 15px;">
+                <h3><span class="user-select-none badge  bg-primary bg-gradient shadow">Наш адрес</span></h3>
+                <h4><span class="badge  bg-primary bg-gradient"><p style="text-align: left">
+                    641300<br>
+                    Курганская область<br>
+                    Кетовский район<br>
+                    с. Лесниково<br>
+                    ул. Кирова, 12 А</p></span></h4>
+            </div><br><br><br>
+            <a href="#"><img src="http://ldmsh.kurg.muzkult.ru/media/2020/03/19/1253756964/Logotip_1.jpg" style="width: 180px; height: 207px;" alt="75"></a><br><br>
+            <a href="#"><img src="http://ldmsh.kurg.muzkult.ru/media/2017/11/03/1236690385/image_image_2839093.png" style="width: 180px; height: 190px; margin-top: 5px;" alt="75"></a><br><br>
+
+
+            <h4><span class="user-select-all badge  bg-primary bg-gradient shadow" style="margin-top: 15px;">Тел: +7 (35231) 44360</span></h4><br>
+
+
+
+            <form class="shadow-lg p-3 mb-5 rounded-3" style="color: white;">
+            <h5><span class="user-select-none badge  bg-primary">Форма обратной связи</span></h5>
+            <div class="mb-3 ">
+              <label for="exampleFormControlInput1" class="form-label">Email address</label>
+              <input type="email" class="form-control shadow mb-1" id="exampleFormControlInput1" placeholder="name@example.com">
+            </div>
+            <div class="mb-3">
+              <label for="exampleFormControlTextarea1" class="form-label ">Сообщение</label>
+              <textarea class="form-control shadow mb-1" id="exampleFormControlTextarea1" rows="3"></textarea>
+
+                <button class="btn btn-primary bg-gradient" style="margin-top: 5px; margin-bottom: -20px;" type="input">Отправить</button>
+            </div>
+            </form>
+
+
         </div>
 
-    {% endif %}
 
 
-    {% if not user.is_authenticated %}
-        <h1 style="text-align: center">Рандомное число вам недоступно</h1>
-        <h4 style="text-align: center">Что бы увидеть нужно <a href="{% url 'auth:login' %}">авторизоваться</a></h4>
-    {% endif %}
+
+
+
+
+
+        <div class="bodyleft bg-primary" style="color: white;">
+        <h3><span class="user-select-none badge  bg-primary bg-gradient shadow" style="margin-top: 15px; text-align: center">Календарь</span></h3>
+        <table class="bg-gradient user-select-none" id="calendar2" style="margin-top: 10px; margin-left: 4px; margin-right: 4px; border-radius: 5px;">
+          <thead>
+            <tr><td>‹<td colspan="5"><td>›
+            <tr><td>Пн<td>Вт<td>Ср<td>Чт<td>Пт<td>Сб<td>Вс
+          <tbody>
+        </table>
+
+        <script>
+        function Calendar2(id, year, month) {
+        var Dlast = new Date(year,month+1,0).getDate(),
+            D = new Date(year,month,Dlast),
+            DNlast = new Date(D.getFullYear(),D.getMonth(),Dlast).getDay(),
+            DNfirst = new Date(D.getFullYear(),D.getMonth(),1).getDay(),
+            calendar = '<tr>',
+            month=["Январь","Февраль","Март","Апрель","Май","Июнь","Июль","Август","Сентябрь","Октябрь","Ноябрь","Декабрь"];
+        if (DNfirst != 0) {
+          for(var  i = 1; i < DNfirst; i++) calendar += '<td>';
+        }else{
+          for(var  i = 0; i < 6; i++) calendar += '<td>';
+        }
+        for(var  i = 1; i <= Dlast; i++) {
+          if (i == new Date().getDate() && D.getFullYear() == new Date().getFullYear() && D.getMonth() == new Date().getMonth()) {
+            calendar += '<td class="today">' + i;
+          }else{
+            calendar += '<td>' + i;
+          }
+          if (new Date(D.getFullYear(),D.getMonth(),i).getDay() == 0) {
+            calendar += '<tr>';
+          }
+        }
+        for(var  i = DNlast; i < 7; i++) calendar += '<td>&nbsp;';
+        document.querySelector('#'+id+' tbody').innerHTML = calendar;
+        document.querySelector('#'+id+' thead td:nth-child(2)').innerHTML = month[D.getMonth()] +' '+ D.getFullYear();
+        document.querySelector('#'+id+' thead td:nth-child(2)').dataset.month = D.getMonth();
+        document.querySelector('#'+id+' thead td:nth-child(2)').dataset.year = D.getFullYear();
+        if (document.querySelectorAll('#'+id+' tbody tr').length < 6) {
+            document.querySelector('#'+id+' tbody').innerHTML += '<tr><td>&nbsp;<td>&nbsp;<td>&nbsp;<td>&nbsp;<td>&nbsp;<td>&nbsp;<td>&nbsp;';
+        }
+        }
+        Calendar2("calendar2", new Date().getFullYear(), new Date().getMonth());
+
+        document.querySelector('#calendar2 thead tr:nth-child(1) td:nth-child(1)').onclick = function() {
+          Calendar2("calendar2", document.querySelector('#calendar2 thead td:nth-child(2)').dataset.year, parseFloat(document.querySelector('#calendar2 thead td:nth-child(2)').dataset.month)-1);
+        }
+
+        document.querySelector('#calendar2 thead tr:nth-child(1) td:nth-child(3)').onclick = function() {
+          Calendar2("calendar2", document.querySelector('#calendar2 thead td:nth-child(2)').dataset.year, parseFloat(document.querySelector('#calendar2 thead td:nth-child(2)').dataset.month)+1);
+        }
+        </script>
+
+        <h3><span class="user-select-none badge  bg-primary bg-gradient shadow" style="margin-top: 30px;">Новости</span></h3>
+            <div class="bg-primary bg-gradient rounded-3" style="margin-left: 8px; text-align: left;">
+                <p style="font-size: 14px; margin-left: 2px;">"Золотое кольцо России"
+                    15-21 октября ученики Лесниковской ДМШ примут участие в экскурсионном туре в рамках национального проекта "Культура"</p><hr>
+            </div>
+
+            <div class="bg-primary bg-gradient rounded-3" style="margin-left: 8px; text-align: left;">
+                <p style="font-size: 14px; margin-left: 14px;"><b>Открытие 35-го концертного сезона Детской филармонии</b></p>
+                <img class="rounded-3" src="http://ldmsh.kurg.muzkult.ru/media/2019/10/17/1266025486/3.jpg" style="width: 190px; height: 120px; margin-left: 8%;">
+                <p style="font-size: 14px; margin-left: 2px;">Концертной программой Духового оркестра "Академия" открылся новый сезон</p>
+                <hr>
+            </div>
+
+            <div class="bg-primary bg-gradient rounded-3" style="margin-left: 8px; text-align: left;">
+                <p style="font-size: 14px; margin-left: 14px;"><b>Международный конкурс "Legni@Ottoni"</b></p>
+                <img class="rounded-3" src="http://ldmsh.kurg.muzkult.ru/media/2019/10/15/1263087072/konkus_duxovikov.jpg" style="width: 190px; height: 120px; margin-left: 8%;">
+                <p style="font-size: 14px; margin-left: 2px;">В г. Кургане состоялся конкурс исполнителей на духовых и ударных инструментах"</p>
+                <hr>
+            </div>
+
+            <div class="bg-primary bg-gradient rounded-3" style="margin-left: 8px; text-align: left;">
+                <p style="font-size: 14px; margin-left: 14px;"><b>Единый день безопасности</b></p>
+                <img class="rounded-3" src="http://ldmsh.kurg.muzkult.ru/media/2019/10/15/1263087072/konkus_duxovikov.jpg" style="width: 190px; height: 120px; margin-left: 8%;">
+                <p style="font-size: 14px; margin-left: 2px;">Беседы с учениками по профилактике ЧС</p>
+                <hr>
+            </div>
+
+
+
+
+        </div>
+
+        <div class=".container-sm" style=" width: 530px; height: 240px; margin-left: 29%; margin-top: 15px;">
+            <div style="color: white; margin-right: auto; margin-left: auto; text-align: center;"><h4><i>Муниципальное казенное учреждение дополнительного образования «Лесниковская детская музыкальная школа»</i></h4></div><br>
+            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="5" aria-label="Slide 6"></button>
+  </div>
+  <div class="carousel-inner rounded-3">
+    <div class="carousel-item active">
+      <img src="http://ldmsh.kurg.muzkult.ru/media/2018/08/09/1228530405/image_image_1350184.jpg?timestamp=1623786555800" class="d-block w-100" alt="0">
+    </div>
+    <div class="carousel-item">
+      <img src="http://ldmsh.kurg.muzkult.ru/media/2018/08/09/1228528896/image_image_981040.jpg" class="d-block w-100" alt="1">
+    </div>
+    <div class="carousel-item">
+      <img src="http://ldmsh.kurg.muzkult.ru/media/2018/08/09/1228528922/image_image_981043.jpg" class="d-block w-100" alt="2">
+    </div>
+    <div class="carousel-item">
+      <img src="http://ldmsh.kurg.muzkult.ru/media/2018/08/09/1228528972/image_image_981042.jpg" class="d-block w-100" alt="3">
+    </div>
+    <div class="carousel-item">
+      <img src="http://ldmsh.kurg.muzkult.ru/media/2018/08/09/1228528685/image_image_981041.jpg" class="d-block w-100" alt="4">
+    </div>
+     <div class="carousel-item">
+      <img src="http://ldmsh.kurg.muzkult.ru/media/2018/08/09/1228528676/image_image_981039.jpg" class="d-block w-100" alt="5">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"  data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Предыдущий</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"  data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Следующий</span>
+  </button>
+</div>
+            <h3><span class="user-select-none badge  bg-primary bg-gradient shadow" style="margin-top: 25px; margin-left: 38%">Главная</span></h3>
+            <p style="color: white; font-size: 12px;">Внимание! Жители Курганской области приглашаются для участия в опросе по оценке качества работы руководителей органов местного самоуправления и организаций, оказывающих услуги населению городских округов и муниципальных районов Курганской области.</p>
+            <p style="color: white; font-size: 12px;">На специально созданной платформе <a href="#" style="text-decoration: none; color: #5fccf6">opros.kurganobl.ru</a> гражданам предлагается оценить качество работы в нескольких сферах деятельности. Среди них: муниципальное управление, жилищно-коммунальное хозяйство, дорожное хозяйство, транспорт, здравоохранение, образование, социальная защита, культура, спорт.</p>
+            <br>
+            <h4 style="color: white; font-size: 16px; text-align: center;"><b><i>Уважаемый посетитель, приветствуем Вас на сайте МКУДО "Лесниковская детская музыкальная школа"!</i></b></h4>
+
+            <div style="float: right;">
+                    <img style="width: 208px; height: 308px; float: right; margin-left: 10px;" src="http://ldmsh.kurg.muzkult.ru/media/2018/08/09/1228517731/image_image_843566.jpg">
+                    <p style="color: white; font-size: 13px; text-align: justify">Лесниковская детская музыкальная школа открылась 1 сентября 1974 года. Организовал набор и обучение детей Николай Григорьевич Елькин –директор школы, преподаватель по классу кларнета. В 1995 году он  удостоен звания "Заслуженный работник культуры Российской Федерации".
+                    Обучение ведется на 14 музыкальных инструментах – фортепиано, баяне, аккордеоне, балалайке, домре, гитаре, кларнете, саксофоне, флейте, трубе, тубе, валторне, тромбоне, ударных инструментах. По данным на июнь 2020 года, школу окончили 413 учеников. Из них 75 продолжили обучение в средне-специальных учебных заведениях, 26 – в профильных ВУЗах.
+                    Стипендиатами Управления культуры "Юные дарования Зауралья" стали 29 обучающихся. Стипендиатами Главы Кетовского района  "Надежда"  - 39 учеников. Стипендия Губернатора Курганской области за высокие достижения в области искусства - 1 ученик.</p>
+                    <p style="color: white; font-size: 13px; text-align: justify">Школа известна в районе и области семейными музыкальными династиями Елькиных, Шмидтов, Ивановых, Филипповых. Творческие коллективы учреждения - активные участники концертов, мероприятий сельского,районного,областного уровня.</p>
+            </div>
+
+            <div style="float: right;">
+                    <img style="width: 300px; height: 200px; float: right; margin-left: 10px;" src="http://ldmsh.kurg.muzkult.ru/media/2018/08/09/1228517728/image_image_843567.jpg">
+                    <p style="color: white; font-size: 13px;"><b><i>Достижения школы:</i></b></p>
+                <p style="color: white; font-size: 13px; text-align: justify">2020г. Духовой оркестр "Академия" - победитель Всероссийского конкурса Министерства культуры РФ в номинации "Культура - это мы!" и обладатель денежного гранта в размере 2 млн. руб.</p>
+                <p style="color: white; font-size: 13px; text-align: justify">2019г. - Победитель конкурса  "Лучшая школа искусств Уральского Федерального округа" (г. Екатеринбург)</p>
+                <p style="color: white; font-size: 13px; text-align: justify">Духовой оркестр "Академия" - в числе сводного оркестра России, внесён в Книгу рекордов Гиннесса, в номинации "Самый большой оркестр", исполняя Гимн РФ в честь 75-летия его написания. (г. Санкт-Петербург)</p>
+                <p style="color: white; font-size: 13px; text-align: justify">2018г. На основании решения экспертной комиссии Ассоциации духовых оркестров и исполнителей на духовых и ударных инструментах «Духовое общество» им. В. Халилова, Заслуженный коллектив народного творчества Курганской области Духовой оркестр «Академия» включён в состав участников творческой смены-фестиваля детских духовых оркестров «Серебряные трубы Черноморья», которая состоится с 20 июня по 10 июля 2018 года в Международном детском центре «Артек».</p>
+                <p style="color: white; font-size: 13px; text-align: justify">2017год 8 июня Коллегией Управления культуры Курганской области вынесено решение оприсвоении звания "Образцовый коллектив" Ансамблю баянистов, рук. Н.В. Окольнишникова.</p>
+                <p style="color: white; font-size: 13px; text-align: justify">2017г. впускник школы Фоминов Андрей (спец. баян) - Лауреат 2 степени Общероссийского конкурса "Молодые дарования России", г. Москва</p>
+                <p style="color: white; font-size: 13px; text-align: justify">2015 год - Лесниковская ДМШ -  лауреат Общеросийского конкурса "50 лучших детских школ искусств"</p>
+                <p style="color: white; font-size: 13px; text-align: justify">2015 год -  17 июня  коллегией Управления культуры Курганской области вынесено решение о присвоении духовому оркестру "Академия"(рук. Н.Г. Елькин) высокого звания "Заслуженный коллектив народного творчества Курганской области"</p>
+                <p style="color: white; font-size: 13px; text-align: justify">2015 год  В соответствии с приказом Управления культуры Курганской области от 15 апреля 2015 года № 145,  Лесниковская ДМШ вошла в число  победителей конкурса на получение денежного поощрения лучшими муниципальными учреждениями культуры Курганской области, находящимися на территории сельских поселений, в размере 100 тысяч рублей.</p>
+                <p style="color: white; font-size: 13px; text-align: justify">2014 год- Духовой оркестр"Академия" - Лауреат областного конкурса "Школа года" в номинации "Школа педагогического успеха"</p>
+                <p style="color: white; font-size: 13px; text-align: justify">2012 год - Заведующий отдела духовых инструментов А.А. Шмидт - лауреат премии "Мое призвание" областного конкурса "Школа года"</p>
+                <p style="color: white; font-size: 13px; text-align: justify">2012 год - Школа внесена в Национальный реестр "Ведущие учреждения культуры России"</p>
+                <p style="color: white; font-size: 13px; text-align: justify">2011 год - Коллектив школы награжден Благодарностью Управления культуры Курганской области</p>
+                <p style="color: white; font-size: 13px; text-align: justify">2010 год  - лауреаты премии "Душа Зауралья" Управления культуры Курганской области: директор школы Н.Г. Елькин, 2016 г. - руководитель эстрадно-джазового оркестра, ансамбля  духовых инструментов С.В. Иванов.</p>
+                <p style="color: white; font-size: 13px; text-align: justify">2010 год - Духовой оркестр "Академия" награжден Почётной грамотой Курганской областной Думы</p>
+                <p style="color: white; font-size: 13px; text-align: justify">2009 год - Духовой оркестр "Академия" - лауреат молодежной премии Правительства Курганской области</p>
+                <p style="color: white; font-size: 13px; text-align: justify">2009 год - Отдел духовых инструментов - лауреат областного конкурса "Школа года" в номинации "Отдел года"</p>
+                <p style="color: white; font-size: 13px; text-align: justify">2008 год – Школа Лауреат областного конкурса «Школа года».</p>
+            </div>
+            <div>
+                <img style="width: 546px; height: 76px;" src="https://psv4.userapi.com/c536132/u163838640/docs/d36/c866fea3107f/imgonline-com-ua-Replace-color-lwugMI2qE05YObi9-removebg-preview.png?extra=DJlt09IFquQJ18Atlv-PCMKsgin9QVM-iYzIhKILfSVFCUNK9sX33aUIhF1iYMIz7HUTQB2QqiNzQ_NzgVTAx4vkUnWiKC0mdmSTaCxVOLkOHC6OctyLaXRJ_egPtryuIi_BqiWOkpDcLd8g38Zlh5xs">
+            </div>
+
+         </div>
+    </div>
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+{% endblock %}
+
+{% block bottom %}
+
+<div class="bottom bg-primary bg-gradient" style="float: bottom">
+
+    <div class="botcontext">
+        <p style="margin-bottom: -3px;">© Лесниковская детская музыкальная школа.
+        <p style="margin-top: -3px;">Использование материалов сайта согласуется с администрацией учреждения.</p>
+        <p style="margin-top: -17px;"><a href="#" style="text-decoration: none; color: #5fccf6">Карта сайта</a> | <a href="#" style="text-decoration: none; color: #5fccf6">Политика конфиденциальности</a></p>
+    </div>
+</div>
+
 
 
 {% endblock %}
+

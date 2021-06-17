@@ -1,18 +1,22 @@
-{% extends 'mainapp/base.html' %}
+{% extends 'authapp/base.html' %}
 <title>{{ page_title|capfirst }}</title>
 {% block content %}
 
-<h1 style="text-align: center">Авторизация</h1>
-<div style="margin-left: 42%; text-align: justify">
-    <div class="form">
-        <form method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <br>
-            <input type="submit" value="Войти">
-            <p><a href="{% url 'auth:register' %}">Зарегистрироваться</a></p>
-        </form>
-    </div>
+<div class="container" style="margin-top: 5%;">
+ <div class="row">
 
-</div>
+ <div class="col-md-offset-3 col-md-6">
+ <form method="post" class="form-horizontal bg-gradient">
+    <span class="heading" style="color: black">Авторизация</span>
+     <div style="width: 78%; margin-left: auto; margin-right: auto; font-size: 13px; color: black;">
+        {% csrf_token %}
+        {{ form.as_p }}
+     </div>
+        <input class="btn btn-default" style="margin-right: 33%;" type="submit"  value="Войти">
+        <a class="btn btn-default"  href="{% url 'auth:register' %}">Зарегестрироваться</a>
+    </div>
+ </form>
+ </div>
+ </div>
+
 {% endblock %}

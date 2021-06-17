@@ -1,21 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <title>Рандомайзер</title>
+    <meta charset="utf-8">
+    <title>Лесниковская детская музыкальная школа</title>
+    <link rel="icon" href="static/img/favicon.ico" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="static/css/main.css">
+
+
+    <!-- Bootstrap core CSS -->
+    <link href="//cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+<style>
+#calendar2 {
+  width: 100%;
+  font: monospace;
+  line-height: 1.2em;
+  font-size: 15px;
+  text-align: center;
+}
+#calendar2 thead tr:last-child {
+  font-size: small;
+  color: rgb(255, 255, 255);
+}
+#calendar2 thead tr:nth-child(1) td:nth-child(2) {
+  color: rgb(255, 255, 255);
+}
+#calendar2 thead tr:nth-child(1) td:nth-child(1):hover, #calendar2 thead tr:nth-child(1) td:nth-child(3):hover {
+  cursor: pointer;
+}
+#calendar2 tbody td {
+  color: rgb(255, 255, 255);
+}
+#calendar2 tbody td:nth-child(n+6), #calendar2 .holiday {
+  color: rgb(93, 191, 236);
+}
+#calendar2 tbody td.today {
+  background: rgb(31, 89, 183);
+  color: rgb(255, 255, 255);
+}
+
+
+
+</style>
+
 </head>
-<body>
-<nav class="navbar">
-    <ul class="navbar-list-ul">
-        {% if not user.is_authenticated %}
-        <li style="float:right"><a href="{% url 'auth:login' %}">Войти</a></li><br>
-        {% endif %}
-        {% if user.is_authenticated %}
-        <li style="float:right"><a href="{% url 'auth:logout' %}">Выйти</a></li>
-        {% endif %}
-    </ul>
-</nav>
+<body class="bg-primary">
+
+
 {% block content %}
 {% endblock %}
+
+
 </body>
+<bottom>
+
+{% block bottom %}
+{% endblock %}
+
+</bottom>
 </html>

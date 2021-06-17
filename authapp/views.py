@@ -16,7 +16,7 @@ def login(request):
         form = LoginForm()
 
     context = {
-        'page_title': 'авторизация',
+        'page_title': 'Авторизация',
         'form': form,
     }
     return render(request, 'authapp/login.html', context)
@@ -37,7 +37,7 @@ def register(request):
         form = RegisterForm()
 
     context = {
-        'page_title': 'регистрация',
+        'page_title': 'Регистрация',
         'form': form,
     }
     return render(request, 'authapp/register.html', context)
